@@ -27,7 +27,10 @@ public class RouletteBallThread extends Thread {
 			 * Generates a random number between 1 and 36
 			 */
 			int ball = r.nextInt(35)+1;
-			log.info("Roulette ball landed on number: " + ball);
+			System.out.println("");
+			System.out.println("Number: " + ball);
+			System.out.println(paddingRight("Player", 12) + paddingLeft("Bet", 5) + paddingLeft("Outcome", 9) +  paddingLeft("Winnings", 10));
+			System.out.println("---");
 			
 			List<Game> games = gameService.findAll();
 			
@@ -41,8 +44,13 @@ public class RouletteBallThread extends Thread {
 			for(Game newGame: newGames) {
 				Game playedGame = gameHelper.getGameResult(newGame, ball);
 				gameService.save(playedGame);
+				
+				System.out.print(paddingRight(playedGame.getName(), 12));
+				System.out.print(paddingLeft(playedGame.getBet(), 5));
+				System.out.print(paddingLeft(String.valueOf(playedGame.getOutcome()==0?"LOSE":"WIN"), 9));
+				System.out.println(paddingLeft(String.valueOf(playedGame.getWinnings()), 10));
 			}
-			
+			System.out.println("");
 			try {
 				Thread.sleep(10000L);
 			} catch (InterruptedException e) {
@@ -54,6 +62,24 @@ public class RouletteBallThread extends Thread {
 	
 	public void setGameService(GameRepository gameService) {
 		this.gameService = gameService;
+	}
+	
+	public String paddingRight(String string, int columnWidth) {
+		String padding = "";
+		for(int x = 0; x < columnWidth - string.length(); x++ ) {
+			padding = padding + " ";
+		}
+		
+		return string + padding;
+	}
+	
+	public String paddingLeft(String string, int columnWidth) {
+		String padding = "";
+		for(int x = 0; x < columnWidth - string.length(); x++ ) {
+			padding = padding + " ";
+		}
+		
+		return padding + string;
 	}
 	
 }
