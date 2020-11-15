@@ -46,7 +46,7 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 		}
 		
 		//User Plays a game
-		Game game = new Game(names.get(0), "EVEN", 1.0);
+		Game game = new Game(names.get(0), "ODD", 1.0);
 		gameService.save(game);
 	}
 

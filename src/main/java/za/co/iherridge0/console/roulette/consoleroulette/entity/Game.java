@@ -23,9 +23,11 @@ public class Game {
 	
 	private double betAmount;
 	
-	private double amountWon;
-	
 	private int rolled;
+	
+	private int outcome;
+	
+	private double winnings;
 	
 	protected Game() {
 		
@@ -79,20 +81,28 @@ public class Game {
 		this.betAmount = betAmount;
 	}
 
-	public double getAmountWon() {
-		return amountWon;
-	}
-
-	public void setAmountWon(double amountWon) {
-		this.amountWon = amountWon;
-	}
-
 	public int getRolled() {
 		return rolled;
 	}
 
 	public void setRolled(int rolled) {
 		this.rolled = rolled;
+	}
+
+	public int getOutcome() {
+		return outcome;
+	}
+
+	public void setOutcome(int outcome) {
+		this.outcome = outcome;
+	}
+
+	public double getWinnings() {
+		return winnings;
+	}
+
+	public void setWinnings(double winnings) {
+		this.winnings = winnings;
 	}
 
 	
