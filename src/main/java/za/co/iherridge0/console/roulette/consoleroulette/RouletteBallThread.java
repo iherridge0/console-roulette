@@ -30,7 +30,11 @@ public class RouletteBallThread extends Thread {
 			log.info("Roulette ball landed on number: " + ball);
 			
 			List<Game> games = gameService.findAll();
-			List<Game> newGames = games.stream().filter(game->game.getRolled() == 0).collect(Collectors.toList());
+			
+			/**
+			 * Filters out all the old games
+			 */
+			List<Game> newGames = games.stream().filter(game->!game.hasPlayed()).collect(Collectors.toList());
 			
 			GameHelper gameHelper = new GameHelper();
 			

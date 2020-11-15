@@ -29,6 +29,8 @@ public class Game {
 	
 	private double winnings;
 	
+	private boolean played;
+	
 	protected Game() {
 		
 	}
@@ -103,6 +105,14 @@ public class Game {
 
 	public void setWinnings(double winnings) {
 		this.winnings = winnings;
+	}
+
+	public boolean hasPlayed() {
+		return played;
+	}
+
+	public void setPlayed(boolean played) {
+		this.played = played;
 	}
 
 	

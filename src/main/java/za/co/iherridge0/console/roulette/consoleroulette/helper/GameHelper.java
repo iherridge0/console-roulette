@@ -15,6 +15,7 @@ public class GameHelper {
 		
 		String bet = game.getBet().trim();
 		game.setRolled(ball);
+		game.setPlayed(true);
 		
 		if(bet.equalsIgnoreCase("EVEN")) {
 			if(ball % 2 == 0) {//Ball landed on an EVEN number : WON
