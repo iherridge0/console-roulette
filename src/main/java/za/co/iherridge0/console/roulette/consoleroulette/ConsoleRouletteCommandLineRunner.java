@@ -31,7 +31,10 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//STARTING CONSOLE ROULETTE
+		//Starts the Roulette Thread that calculates a new random number between 1 - 36 every 30seconds
+		RouletteBallThread thread = new RouletteBallThread();
+		thread.setGameService(gameService);
+		thread.start();
 		
 		//"Test: reading from file: " + file);
 		CSVHelper csvHelper = new CSVHelper();

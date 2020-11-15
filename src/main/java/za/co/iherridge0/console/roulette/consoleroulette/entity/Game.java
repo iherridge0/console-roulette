@@ -25,7 +25,7 @@ public class Game {
 	
 	private double amountWon;
 	
-	private String rolled;
+	private int rolled;
 	
 	protected Game() {
 		
@@ -87,11 +87,11 @@ public class Game {
 		this.amountWon = amountWon;
 	}
 
-	public String getRolled() {
+	public int getRolled() {
 		return rolled;
 	}
 
-	public void setRolled(String rolled) {
+	public void setRolled(int rolled) {
 		this.rolled = rolled;
 	}
 
