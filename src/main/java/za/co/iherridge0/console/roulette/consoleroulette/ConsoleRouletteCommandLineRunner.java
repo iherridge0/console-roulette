@@ -1,6 +1,7 @@
 package za.co.iherridge0.console.roulette.consoleroulette;
 
 import java.util.List;
+import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,12 +43,18 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 		for(String name: names) {
 			Player player = new Player(name);
 			playerService.save(player);
-		 
 		}
 		
-		//User Plays a game
-		Game game = new Game(names.get(0), "ODD", 1.0);
-		gameService.save(game);
+		while(true) {
+			
+			Scanner scan = new Scanner(System.in); 
+			String name = scan.next(); 
+			String bet = scan.next();
+			double amount = scan.nextDouble();
+			
+			Game game = new Game(name, bet, amount);
+			gameService.save(game);
+		}
+		
 	}
-
 }
