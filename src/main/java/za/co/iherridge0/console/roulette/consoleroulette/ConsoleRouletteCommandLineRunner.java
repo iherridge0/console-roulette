@@ -34,14 +34,13 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 		
 		//Starts the Roulette Thread that calculates a new random number between 1 - 36 every 30seconds
 		RouletteBallThread thread = new RouletteBallThread();
-		thread.setGameService(gameService);
+		thread.setGameService(gameService, playerService);
 		thread.start();
 		
 		//"Test: reading from file: " + file);
 		CSVHelper csvHelper = new CSVHelper();
-		List<String> names = csvHelper.csvtoStrings(file);
-		for(String name: names) {
-			Player player = new Player(name);
+		List<Player> players = csvHelper.csvToPlayers(file);
+		for(Player player: players) {
 			playerService.save(player);
 		}
 		
@@ -50,7 +49,7 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 			Scanner scan = new Scanner(System.in); 
 			String name = scan.next(); 
 			String bet = scan.next();
-			double amount = scan.nextDouble();
+			double amount = Double.valueOf(scan.next());
 			
 			Game game = new Game(name, bet, amount);
 			gameService.save(game);

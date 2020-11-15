@@ -15,6 +15,10 @@ public class Player {
 	
 	private String name;
 	
+	private double totalBet;
+	
+	private double totalWon;
+	
 	protected Player() {
 		
 	}
@@ -22,6 +26,13 @@ public class Player {
 	public Player(String name) {
 		super();
 		this.name = name;
+	}
+	
+	public Player(String name, double totalBet, double totalWon) {
+		super();
+		this.name = name;
+		this.totalBet = totalBet;
+		this.totalWon = totalWon;
 	}
 
 	public String getName() {
@@ -38,6 +49,22 @@ public class Player {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public double getTotalBet() {
+		return totalBet;
+	}
+
+	public void setTotalBet(double totalBet) {
+		this.totalBet = totalBet;
+	}
+
+	public double getTotalWon() {
+		return totalWon;
+	}
+
+	public void setTotalWon(double totalWon) {
+		this.totalWon = totalWon;
 	}
 
 }
