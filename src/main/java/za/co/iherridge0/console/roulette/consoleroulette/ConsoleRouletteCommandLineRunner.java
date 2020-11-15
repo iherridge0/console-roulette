@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import za.co.iherridge0.console.roulette.consoleroulette.entity.Game;
 import za.co.iherridge0.console.roulette.consoleroulette.entity.Player;
 import za.co.iherridge0.console.roulette.consoleroulette.helper.CSVHelper;
+import za.co.iherridge0.console.roulette.consoleroulette.repository.GameRepository;
 import za.co.iherridge0.console.roulette.consoleroulette.repository.PlayerRepository;
 
 @Component
@@ -22,6 +24,9 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 	
 	@Autowired
 	PlayerRepository playerService;
+	
+	@Autowired
+	GameRepository gameService;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -36,6 +41,10 @@ public class ConsoleRouletteCommandLineRunner implements CommandLineRunner {
 			playerService.save(player);
 		 
 		}
+		
+		//User Plays a game
+		Game game = new Game(names.get(0), "EVEN", 1.0);
+		gameService.save(game);
 	}
 
 }
